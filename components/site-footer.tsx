@@ -81,7 +81,6 @@ export function SiteFooter() {
           <p>
             © {year} {site.name}
           </p>
-          <p className="font-mono">Built with Next.js · Deployed on Vercel</p>
         </div>
       </div>
     </footer>

@@ -8,7 +8,7 @@ import { CommandPalette } from "@/components/command-palette";
 
 /**
  * App-wide client providers.
- * - next-themes: dark-first, class strategy, no flash on toggle.
+ * - next-themes: light-first, class strategy, no flash on toggle.
  * - RecruiterProvider: persisted recruiter-mode flag (reduced motion + simplified layout).
  * - MotionConfig reducedMotion="user": honours prefers-reduced-motion globally.
  * - CommandPalette: mounted once, opens on ⌘/Ctrl-K anywhere.
@@ -17,7 +17,7 @@ export function Providers({ children }: { children: ReactNode }) {
   return (
     <ThemeProvider
       attribute="class"
-      defaultTheme="dark"
+      defaultTheme="light"
       enableSystem={false}
       disableTransitionOnChange
     >
