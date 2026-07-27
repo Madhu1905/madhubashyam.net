@@ -3,6 +3,7 @@ import { Download, ExternalLink } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Reveal } from "@/components/reveal";
+import { asset } from "@/lib/base-path";
 import { profile } from "@/data/profile";
 import { experience } from "@/data/experience";
 import { education } from "@/data/education";
@@ -34,14 +35,14 @@ export default function ResumePage() {
           </div>
           <div className="flex shrink-0 flex-wrap gap-3">
             <ButtonLink
-              href="/resume.pdf"
+              href={asset("/resume.pdf")}
               variant="primary"
               download
               aria-label="Download resume PDF"
             >
               <Download className="h-4 w-4" aria-hidden /> Download PDF
             </ButtonLink>
-            <ButtonLink href="/resume.pdf" variant="outline" external>
+            <ButtonLink href={asset("/resume.pdf")} variant="outline" external>
               <ExternalLink className="h-4 w-4" aria-hidden /> Open PDF
             </ButtonLink>
           </div>

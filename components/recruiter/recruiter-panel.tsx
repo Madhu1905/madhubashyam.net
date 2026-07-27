@@ -3,13 +3,14 @@
 import Link from "next/link";
 import { Download } from "lucide-react";
 import { useRecruiter } from "./recruiter-provider";
+import { asset } from "@/lib/base-path";
 import { profile } from "@/data/profile";
 
 const quickLinks = [
   { label: "Experience", href: "/experience" },
   { label: "Skills", href: "/skills" },
   { label: "Projects", href: "/projects" },
-  { label: "Certifications", href: "/about#certifications" },
+  { label: "Certifications", href: "/certifications" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -41,7 +42,7 @@ export function RecruiterPanel() {
             </Link>
           ))}
           <a
-            href="/resume.pdf"
+            href={asset("/resume.pdf")}
             download
             className="bg-accent inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium text-white transition-opacity hover:opacity-90"
           >

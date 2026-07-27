@@ -8,6 +8,7 @@ export type NavItem = {
 export const primaryNav: NavItem[] = [
   { label: "About", href: "/about", description: "Background, focus, and how I work" },
   { label: "Experience", href: "/experience", description: "Roles and what I did" },
+  { label: "Certifications", href: "/certifications", description: "Security+ and CEH" },
   { label: "Projects", href: "/projects", description: "Security tools I've built" },
   { label: "Skills", href: "/skills", description: "Tools, platforms, and techniques" },
   { label: "Resume", href: "/resume", description: "Online resume and PDF download" },
@@ -45,7 +46,7 @@ export const terminalCommands: TerminalCommand[] = [
   { name: "resume", description: "View / download resume", href: "/resume" },
   { name: "contact", description: "How to reach me", href: "/contact" },
   { name: "education", description: "Degrees and focus", href: "/about" },
-  { name: "certifications", description: "Security+ and CEH", href: "/about" },
+  { name: "certifications", description: "Security+ and CEH", href: "/certifications" },
   { name: "blog", description: "Knowledge center", href: "/blog" },
   { name: "research", description: "Research write-ups", href: "/research" },
   { name: "case-studies", description: "Technical case studies", href: "/case-studies" },

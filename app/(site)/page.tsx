@@ -9,6 +9,7 @@ import { Telemetry } from "@/components/effects/telemetry";
 import { SocDashboard } from "@/features/home/soc-dashboard";
 import { Terminal } from "@/features/terminal/terminal";
 import { PersonJsonLd } from "@/components/json-ld";
+import { asset } from "@/lib/base-path";
 import { profile } from "@/data/profile";
 
 export default function HomePage() {
@@ -59,7 +60,7 @@ export default function HomePage() {
                 Résumé
               </ButtonLink>
               <ButtonLink
-                href="/resume.pdf"
+                href={asset("/resume.pdf")}
                 variant="ghost"
                 download
                 aria-label="Download resume PDF"

@@ -7,6 +7,7 @@ import { useTheme } from "next-themes";
 import { Briefcase, FileDown, Home, Mail, MoonStar, SunMedium } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
 import { useRecruiter } from "@/components/recruiter/recruiter-provider";
+import { asset } from "@/lib/base-path";
 import { allNav } from "@/data/navigation";
 import { profile } from "@/data/profile";
 
@@ -15,7 +16,7 @@ const OPEN_EVENT = "command-palette:open";
 /** Programmatic file download without leaving the page. */
 function downloadResume() {
   const a = document.createElement("a");
-  a.href = "/resume.pdf";
+  a.href = asset("/resume.pdf");
   a.download = "";
   document.body.appendChild(a);
   a.click();

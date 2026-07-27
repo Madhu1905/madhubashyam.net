@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { publicFileExists } from "@/lib/assets";
+import { asset } from "@/lib/base-path";
 import { profile } from "@/data/profile";
 import { cn } from "@/lib/utils";
 
@@ -20,7 +21,7 @@ export function Portrait({
   if (publicFileExists("portrait.jpg")) {
     return (
       <Image
-        src="/portrait.jpg"
+        src={asset("/portrait.jpg")}
         alt={profile.name}
         width={size}
         height={size}

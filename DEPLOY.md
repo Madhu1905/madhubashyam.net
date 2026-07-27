@@ -56,10 +56,11 @@ image, image optimization, and the MDX blog pipeline all run as-is. Free for per
 ## Option B — GitHub Pages (already configured ✅)
 
 The project is set up for GitHub Pages: `next.config.ts` uses `output: "export"` (plus
-`trailingSlash` and unoptimized images), the deploy workflow lives at
-`.github/workflows/deploy.yml`, and `public/CNAME` holds `madhubashyam.net`. The static
-export has been built and verified — every page, nested routes, `sitemap`/`robots`/`manifest`,
-and the OG image render correctly served as plain files.
+`trailingSlash` and unoptimized images) and the deploy workflow lives at
+`.github/workflows/deploy.yml`. The workflow's `actions/configure-pages` step computes the
+correct **base path** and injects it (`NEXT_PUBLIC_BASE_PATH`) so every asset — CSS, the
+portrait photo, the résumé PDF — resolves whether the site is served at
+`madhu1905.github.io/<repo>/` **or** at a custom domain (root). Built and verified.
 
 You only need to:
 
@@ -68,16 +69,15 @@ You only need to:
    **That is the only Pages setting to change.**
 3. The **Deploy to GitHub Pages** workflow runs automatically on each push to `main`
    (watch it under the **Actions** tab). First run takes ~2 minutes; when it's green, the
-   site is live.
-4. **Custom domain (madhubashyam.net):**
-   - Settings → Pages → **Custom domain** → type `madhubashyam.net` → **Save**.
-   - At your domain registrar, add these DNS records:
-     - Four **A** records for `@` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-     - One **CNAME** for `www` → `madhu1905.github.io`
-   - Once GitHub issues the certificate, tick **Enforce HTTPS**.
-
-> The committed `CNAME` keeps the custom domain across redeploys. Before DNS propagates, use
-> the custom domain (the raw `madhu1905.github.io/…` URL will look unstyled — that's expected).
+   site is live at `https://madhu1905.github.io/<repo>/` — fully styled, images and all.
+4. **Custom domain (optional, madhubashyam.net):**
+   - Settings → Pages → **Custom domain** → type `madhubashyam.net` → **Save**
+     (GitHub stores this and keeps it across deploys — no committed `CNAME` needed).
+   - At your registrar, add DNS: four **A** records for `@` →
+     `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`, and a
+     **CNAME** for `www` → `madhu1905.github.io`.
+   - Once GitHub issues the certificate, tick **Enforce HTTPS**. The base path automatically
+     becomes empty (root) once the custom domain is active — no code change needed.
 
 ### Good to know
 - Adding a post later still just means dropping an `.mdx` file in `content/<section>/` and

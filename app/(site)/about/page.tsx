@@ -5,7 +5,6 @@ import { Container } from "@/components/ui/container";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Portrait } from "@/components/portrait";
 import { Reveal } from "@/components/reveal";
-import { CertGallery } from "@/components/cert-gallery";
 import { profile } from "@/data/profile";
 import { education } from "@/data/education";
 
@@ -115,18 +114,6 @@ export default function AboutPage() {
             </Reveal>
           ))}
         </div>
-      </section>
-
-      {/* Certifications */}
-      <section className="mt-16">
-        <Reveal>
-          <SectionHeading eyebrow="Certifications" title="Credentials" />
-        </Reveal>
-        <Reveal delay={0.05}>
-          <div className="mt-8">
-            <CertGallery />
-          </div>
-        </Reveal>
       </section>
     </Container>
   );
