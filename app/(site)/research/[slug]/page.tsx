@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PostLayout } from "@/components/content/post-layout";
-import { getPost, getPostSlugs } from "@/lib/posts";
+import { getPost, getStaticParamSlugs } from "@/lib/posts";
 
 const SECTION = "research";
 
 export function generateStaticParams() {
-  return getPostSlugs(SECTION).map((slug) => ({ slug }));
+  return getStaticParamSlugs(SECTION).map((slug) => ({ slug }));
 }
 
 export const dynamicParams = false;

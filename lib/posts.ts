@@ -26,7 +26,20 @@ export function getPostSlugs(section: string): string[] {
     .map((f) => f.replace(/\.mdx?$/, ""));
 }
 
+/**
+ * Slugs to prerender for a section's [slug] route. Real posts when they exist,
+ * otherwise a single `_keep` placeholder so `output: export` always has at least
+ * one path to emit (it renders as a not-found page — never linked or listed).
+ */
+export function getStaticParamSlugs(section: string): string[] {
+  const real = getPostSlugs(section);
+  return real.length ? real : ["_keep"];
+}
+
 export function getPost(section: string, slug: string): PostMeta | null {
+  // Underscore-prefixed files are placeholders — treat as not found.
+  if (slug.startsWith("_")) return null;
+
   for (const ext of [".mdx", ".md"]) {
     const file = path.join(sectionDir(section), slug + ext);
     if (fs.existsSync(file)) {

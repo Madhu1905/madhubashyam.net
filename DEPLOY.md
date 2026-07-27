@@ -53,40 +53,37 @@ image, image optimization, and the MDX blog pipeline all run as-is. Free for per
 
 ---
 
-## Option B — GitHub Pages (static export)
+## Option B — GitHub Pages (already configured ✅)
 
-Free, hosted on GitHub's own infra, but Pages only serves **static files**, so the app
-must be exported statically. This needs a few changes:
+The project is set up for GitHub Pages: `next.config.ts` uses `output: "export"` (plus
+`trailingSlash` and unoptimized images), the deploy workflow lives at
+`.github/workflows/deploy.yml`, and `public/CNAME` holds `madhubashyam.net`. The static
+export has been built and verified — every page, nested routes, `sitemap`/`robots`/`manifest`,
+and the OG image render correctly served as plain files.
 
-1. **`next.config.ts`** — add:
-   ```ts
-   const nextConfig: NextConfig = {
-     output: "export",
-     images: { unoptimized: true }, // Pages can't run the image optimizer
-     // If hosting at username.github.io/<repo> (no custom domain), also:
-     // basePath: "/madhubashyam.net",
-     // ...existing options
-   };
-   ```
-2. **Build** produces a static site in `out/`:
-   ```bash
-   npm run build   # with output:"export", emits ./out
-   ```
-3. Add a **GitHub Actions** workflow (`.github/workflows/deploy.yml`) that builds and
-   publishes `out/` to Pages, then enable **Settings → Pages → Source: GitHub Actions**.
-4. **Custom domain:** add a `public/CNAME` file containing `madhubashyam.net`, and point
-   DNS at GitHub Pages (A records `185.199.108–111.153`, plus a `www` CNAME to
-   `Madhu1905.github.io`).
+You only need to:
 
-### Tradeoffs vs. Vercel
+1. **Push** the repo to GitHub (Step 1 above).
+2. Repo → **Settings → Pages** → **Build and deployment → Source: `GitHub Actions`**.
+   **That is the only Pages setting to change.**
+3. The **Deploy to GitHub Pages** workflow runs automatically on each push to `main`
+   (watch it under the **Actions** tab). First run takes ~2 minutes; when it's green, the
+   site is live.
+4. **Custom domain (madhubashyam.net):**
+   - Settings → Pages → **Custom domain** → type `madhubashyam.net` → **Save**.
+   - At your domain registrar, add these DNS records:
+     - Four **A** records for `@` → `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+     - One **CNAME** for `www` → `madhu1905.github.io`
+   - Once GitHub issues the certificate, tick **Enforce HTTPS**.
 
-- No on-the-fly image optimization (all images served at full size).
-- The dynamic OG image (`app/opengraph-image.tsx`) is generated at build to a static PNG —
-  usually fine, but worth checking after the first deploy.
-- No server features (none are used today, so nothing breaks now — but it caps future options
-  like a real contact-form backend).
+> The committed `CNAME` keeps the custom domain across redeploys. Before DNS propagates, use
+> the custom domain (the raw `madhu1905.github.io/…` URL will look unstyled — that's expected).
 
-**Recommendation:** use Vercel unless you specifically want everything on GitHub.
+### Good to know
+- Adding a post later still just means dropping an `.mdx` file in `content/<section>/` and
+  pushing — the workflow rebuilds and redeploys.
+- Tradeoffs vs. Vercel: images aren't auto-optimized, and there's no server runtime (fine
+  today — nothing uses one).
 
 ---
 

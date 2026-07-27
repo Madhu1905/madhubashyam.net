@@ -3,6 +3,12 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   reactCompiler: true,
+  // Static export for GitHub Pages (emits ./out with plain HTML/CSS/JS).
+  output: "export",
+  // Emit /about/index.html etc. so paths resolve cleanly on GitHub Pages.
+  trailingSlash: true,
+  // Pages can't run the Next image optimizer, so serve images as-is.
+  images: { unoptimized: true },
   // Let .md/.mdx files be treated as pages/content.
   pageExtensions: ["ts", "tsx", "js", "jsx", "md", "mdx"],
   // Pin the workspace root: a stray package-lock.json in the home directory
