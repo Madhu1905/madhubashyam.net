@@ -43,11 +43,9 @@ next-env.d.ts
 # local editor / agent config
 /.claude/
 
-# stray files dropped in the project root (originals kept in public/)
+# stray files dropped in the project root
 /MadhuBashyam.pdf
 /1757811643078.jpeg
-
-# duplicate of public/resume.pdf (the one the site serves)
 /public/MadhuBashyam.pdf
 
 # build brief / agent rules (kept locally, not in the public repo)

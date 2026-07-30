@@ -4,24 +4,13 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Command } from "cmdk";
 import { useTheme } from "next-themes";
-import { Briefcase, FileDown, Home, Mail, MoonStar, SunMedium } from "lucide-react";
+import { Briefcase, Home, Mail, MoonStar, SunMedium } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
 import { useRecruiter } from "@/components/recruiter/recruiter-provider";
-import { asset } from "@/lib/base-path";
 import { allNav } from "@/data/navigation";
 import { profile } from "@/data/profile";
 
 const OPEN_EVENT = "command-palette:open";
-
-/** Programmatic file download without leaving the page. */
-function downloadResume() {
-  const a = document.createElement("a");
-  a.href = asset("/resume.pdf");
-  a.download = "";
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
-}
 
 export function openCommandPalette() {
   window.dispatchEvent(new Event(OPEN_EVENT));
@@ -102,17 +91,6 @@ export function CommandPalette() {
           heading="Actions"
           className="[&_[cmdk-group-heading]]:text-muted mt-1 [&_[cmdk-group-heading]]:px-3 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:font-mono [&_[cmdk-group-heading]]:text-[11px] [&_[cmdk-group-heading]]:tracking-wider [&_[cmdk-group-heading]]:uppercase"
         >
-          <Command.Item
-            value="download resume pdf cv"
-            onSelect={() => {
-              setOpen(false);
-              downloadResume();
-            }}
-            className={itemClass}
-          >
-            <FileDown className="h-4 w-4" aria-hidden />
-            <span>Download résumé (PDF)</span>
-          </Command.Item>
           <Command.Item
             value="toggle theme dark light mode"
             onSelect={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}

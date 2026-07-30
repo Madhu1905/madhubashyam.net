@@ -1,9 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { Download } from "lucide-react";
+import { Mail } from "lucide-react";
 import { useRecruiter } from "./recruiter-provider";
-import { asset } from "@/lib/base-path";
 import { profile } from "@/data/profile";
 
 const quickLinks = [
@@ -42,11 +41,10 @@ export function RecruiterPanel() {
             </Link>
           ))}
           <a
-            href={asset("/resume.pdf")}
-            download
+            href={`mailto:${profile.contact.email}`}
             className="bg-accent inline-flex items-center gap-1.5 rounded-md px-3 py-1.5 text-xs font-medium text-white transition-opacity hover:opacity-90"
           >
-            <Download className="h-3.5 w-3.5" aria-hidden /> Resume
+            <Mail className="h-3.5 w-3.5" aria-hidden /> Email me
           </a>
         </div>
       </div>

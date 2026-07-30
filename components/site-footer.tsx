@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
-import { growthNav, primaryNav } from "@/data/navigation";
+import { primaryNav } from "@/data/navigation";
 import { profile } from "@/data/profile";
 import { site } from "@/data/site";
 
@@ -49,32 +49,20 @@ export function SiteFooter() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-x-10 gap-y-6 text-sm sm:gap-x-16">
-            <nav aria-label="Pages" className="flex flex-col gap-2">
-              <p className="text-muted font-mono text-[11px] tracking-wider uppercase">Pages</p>
-              {primaryNav.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-muted hover:text-fg transition-colors"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-            <nav aria-label="Writing" className="flex flex-col gap-2">
-              <p className="text-muted font-mono text-[11px] tracking-wider uppercase">Writing</p>
-              {growthNav.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-muted hover:text-fg transition-colors"
-                >
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-          </div>
+          <nav
+            aria-label="Pages"
+            className="grid grid-cols-2 gap-x-10 gap-y-2 text-sm sm:gap-x-16"
+          >
+            {primaryNav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-muted hover:text-fg transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
         </div>
 
         <div className="border-border/70 text-muted mt-10 flex flex-col gap-2 border-t pt-6 text-xs sm:flex-row sm:items-center sm:justify-between">

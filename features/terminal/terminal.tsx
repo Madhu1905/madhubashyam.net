@@ -14,12 +14,7 @@ const NAV: Record<string, string> = {
   skills: "/skills",
   experience: "/experience",
   projects: "/projects",
-  resume: "/resume",
   contact: "/contact",
-  blog: "/blog",
-  research: "/research",
-  "case-studies": "/case-studies",
-  lab: "/lab",
 };
 
 const PROMPT = "visitor@madhubashyam:~$";
@@ -110,7 +105,7 @@ export function Terminal() {
         },
         { kind: "out", text: "  • MSc in Cybersecurity (First Class Honours) · CEH · Security+" },
         { kind: "out", text: "  • Built SeCPoD, an end-to-end insider-threat detection platform" },
-        { kind: "out", text: "Type 'contact' to reach me, or 'resume' for the full picture." },
+        { kind: "out", text: "Type 'contact' to reach me, or 'projects' for the full picture." },
       );
     } else if (cmd === "easteregg") {
       out.push(

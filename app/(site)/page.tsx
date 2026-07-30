@@ -1,4 +1,4 @@
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { ButtonLink } from "@/components/ui/button-link";
 import { SectionHeading } from "@/components/ui/section-heading";
@@ -9,7 +9,6 @@ import { Telemetry } from "@/components/effects/telemetry";
 import { SocDashboard } from "@/features/home/soc-dashboard";
 import { Terminal } from "@/features/terminal/terminal";
 import { PersonJsonLd } from "@/components/json-ld";
-import { asset } from "@/lib/base-path";
 import { profile } from "@/data/profile";
 
 export default function HomePage() {
@@ -56,16 +55,8 @@ export default function HomePage() {
               <ButtonLink href="/projects" variant="primary">
                 View projects <ArrowRight className="h-4 w-4" aria-hidden />
               </ButtonLink>
-              <ButtonLink href="/resume" variant="outline">
-                Résumé
-              </ButtonLink>
-              <ButtonLink
-                href={asset("/resume.pdf")}
-                variant="ghost"
-                download
-                aria-label="Download resume PDF"
-              >
-                <Download className="h-4 w-4" aria-hidden /> PDF
+              <ButtonLink href="/contact" variant="outline">
+                Get in touch
               </ButtonLink>
             </div>
           </Reveal>
