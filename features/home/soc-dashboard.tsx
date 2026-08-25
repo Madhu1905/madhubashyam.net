@@ -91,7 +91,7 @@ export function SocDashboard() {
           {/* Featured tools */}
           <div className={card}>
             <p className={label}>
-              <Wrench className="h-3.5 w-3.5" aria-hidden /> Featured tools
+              <Wrench className="h-3.5 w-3.5" aria-hidden /> Core tools
             </p>
             <ul className="mt-3 space-y-1.5">
               {featuredTools.map((t) => (
