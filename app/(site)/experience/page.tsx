@@ -7,7 +7,7 @@ import { experience } from "@/data/experience";
 export const metadata: Metadata = {
   title: "Experience",
   description:
-    "Security operations experience — security monitoring, incident response, threat hunting, and vulnerability management.",
+    "SOC and Trust & Safety experience — security monitoring, incident response, threat hunting, and vulnerability management.",
 };
 
 export default function ExperiencePage() {
@@ -18,7 +18,7 @@ export default function ExperiencePage() {
           as="h1"
           eyebrow="Experience"
           title="Where I've worked"
-          description="Security operations roles across Ireland and India."
+          description="Security operations and trust & safety roles across Ireland and India."
         />
       </Reveal>
 

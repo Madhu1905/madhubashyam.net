@@ -13,7 +13,7 @@ export function PersonJsonLd() {
     jobTitle: profile.role,
     description: profile.metaDescription,
     email: `mailto:${profile.contact.email}`,
-    worksFor: { "@type": "Organization", name: "Fenergo" },
+    worksFor: { "@type": "Organization", name: "Accenture" },
     address: {
       "@type": "PostalAddress",
       addressLocality: "Dublin",
